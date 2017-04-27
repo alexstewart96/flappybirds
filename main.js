@@ -141,7 +141,7 @@ this.labelScore.text = this.score;
 var game = new Phaser.game(400, 490);
 
 //add the mainstate and call it main
-game.state.add('main' , mainstate);
+game.state.add('main', mainState);
 
 //start the state to actually start the game
 game.state.start('main');

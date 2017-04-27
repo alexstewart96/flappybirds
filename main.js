@@ -17,7 +17,7 @@ var mainState = {
          game.stage.backgroundColor = '#71c5cf';
          
          //set the physics for the game
-         game.physics.startsystem(Phaser.Physics.ARCADE);
+         game.physics.startSystem(Phaser.Physics.ARCADE);
          
          //display the bird at the position of x=100 and y=245
          this.bird = game.add.sprite(100, 245, 'bird');

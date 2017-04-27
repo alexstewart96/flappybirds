@@ -86,6 +86,12 @@ this.labelScore = game.add.text(20, 20, "0",
             //Automatically kill pipe when it is no longer visible
             pipe.checkWorldBounds = true;
             pipe.outOfBoundsKill = true;
+            
+            //calls the restartGame function each time the bird dies
+
+game.physics.arcade.overlap(this.bird, this.pipes, this.restartGame,
+
+null, this);
         },
     
     //many pipes
@@ -98,8 +104,15 @@ this.labelScore = game.add.text(20, 20, "0",
         for (var i = 0; i < 8; i++)
             if (i != hole && i != hole +1)
                 this.addOnePipe(400, i * 60 + 10);
+        
+       //Increases score as new pipes are created
+
+this.score += 1;
+
+this.labelScore.text = this.score;
+        
     },
-};
+
 
 //initialise phaser and create a 400px x 490px game
 var game = new Phaser.game(400, 490);
@@ -110,5 +123,5 @@ game.state.add('main' , mainstate);
 //start the state to actually start the game
 game.state.start('main');
 
-
+};
 

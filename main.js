@@ -136,7 +136,7 @@ this.labelScore.text = this.score;
         
     },
 
-
+};
 //initialise phaser and create a 400px x 490px game
 var game = new Phaser.game(400, 490);
 
@@ -146,5 +146,4 @@ game.state.add('main', mainState);
 //start the state to actually start the game
 game.state.start('main');
 
-};
 

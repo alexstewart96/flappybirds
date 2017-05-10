@@ -57,11 +57,7 @@ this.labelScore = game.add.text(20, 20, "0",
            if (this.bird.y <0 || this.bird.y > 490)
                this.restartGame();
            
-           //calls the restartGame function each time the bird dies
-
-game.physics.arcade.overlap(this.bird, this.pipes, this.restartGame,
-
-null, this);
+       },
            
            // Slowly rotate the bird downward, up to a certain point
 

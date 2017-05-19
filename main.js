@@ -110,8 +110,6 @@ game.physics.arcade.overlap(this.bird, this.pipes, this.restartGame,null, this);
 
     this.labelScore.text = this.score;
       
-    //calls the restartGame function each time the bird dies
- 
 };
 //initialise phaser and create a 400px x 490px game
 var game = new Phaser.Game(400, 490);

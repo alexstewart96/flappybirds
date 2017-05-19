@@ -93,6 +93,16 @@ game.physics.arcade.overlap(this.bird, this.pipes, this.restartGame,null, this);
     //add pipe to group
     this.pipes.add(pipe);
     
+      //Enable physics on the pipe
+game.physics.arcade.enable(pipe);
+      
+      //Add velocity to the pipe to make it move left
+pipe.body.velocity.x = -200;
+      
+      //Automatically kill the pipe when it is no longer visible
+pipe.checkWorldBounds = true;
+pipe.outOfBoundsKill = true;
+  },
       //many pipes
   addRowOfPipes : function() {
     //Randomly pick a number between 1 and 5

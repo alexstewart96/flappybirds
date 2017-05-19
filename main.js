@@ -90,7 +90,24 @@ var mainState = {
 
     //add pipe to group
     this.pipes.add(pipe);
+    
+      //many pipes
+  addRowOfPipes : function() {
+    //Randomly pick a number between 1 and 5
+    //This will be the hole position in the pipe
+    var hole = Math.floor(Math.random() * 5) + 1;
 
+    //Add 6 pipes
+    for (var i = 0; i < 8; i++) 
+      if (i != hole && i != hole + 1) 
+        this.addOnePipe(400, i * 60 + 10);
+  },
+    //Increases score as new pipes are created
+
+    this.score += 1;
+
+    this.labelScore.text = this.score;
+      
     //Enable the physics on the pipe
     game.physics.arcade.enable(pipe);
 
@@ -104,26 +121,7 @@ var mainState = {
     //calls the restartGame function each time the bird dies
 
     game.physics.arcade.overlap(this.bird, this.pipes, this.restartGame, null, this);
-  },
-
-  //many pipes
-  addRowOfPipes : function() {
-    //Randomly pick a number between 1 and 5
-    //This will be the hole position in the pipe
-    var hole = Math.floor(Math.random() * 5) + 1;
-
-    //Add 6 pipes
-    for (var i = 0; i < 8; i++) 
-      if (i != hole && i != hole + 1) 
-        this.addOnePipe(400, i * 60 + 10);
-  
-    //Increases score as new pipes are created
-
-    this.score += 1;
-
-    this.labelScore.text = this.score;
-
-  }
+ 
 };
 //initialise phaser and create a 400px x 490px game
 var game = new Phaser.Game(400, 490);

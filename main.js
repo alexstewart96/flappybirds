@@ -30,7 +30,7 @@ var mainState = {
       this.bird.body.gravity.y = 1000;
 
       //call 'jump' function when the spacebar is pressed
-      var spaceBar = game.input.keyboard.addkey(phaser.keyboard.spaceBar);
+      var spaceBar = game.input.keyboard.addkey(phaser.keyboard.SPACEBAR);
       spaceBar.onDown.add(this.jump, this);
 
       //Create an empty group
@@ -82,6 +82,8 @@ var mainState = {
   restartGame : function() {
     //start the main state which restarts the game
     game.state.start('main');
+      //calls the restartGame function each time the bird dies
+game.physics.arcade.overlap(this.bird, this.pipes, this.restartGame,null, this);
   },
   //add a pipe
   addOnePipe : function(x, y) {

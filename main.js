@@ -92,9 +92,7 @@ game.physics.arcade.overlap(this.bird, this.pipes, this.restartGame,null, this);
 
     //add pipe to group
     this.pipes.add(pipe);
-    
-      
- 
+  },
       //many pipes
   addRowOfPipes : function() {
     //Randomly pick a number between 1 and 5
@@ -105,26 +103,14 @@ game.physics.arcade.overlap(this.bird, this.pipes, this.restartGame,null, this);
     for (var i = 0; i < 8; i++) 
       if (i != hole && i != hole + 1) 
         this.addOnePipe(400, i * 60 + 10);
-  },
+  
     //Increases score as new pipes are created
 
     this.score += 1;
 
     this.labelScore.text = this.score;
       
-    //Enable the physics on the pipe
-    game.physics.arcade.enable(pipe);
-
-    //add velocity to the pipe to make it move left
-    pipe.body.velocity.x = -200;
-
-    //Automatically kill pipe when it is no longer visible
-    pipe.checkWorldBounds = true;
-    pipe.outOfBoundsKill = true;
-
     //calls the restartGame function each time the bird dies
-
-    game.physics.arcade.overlap(this.bird, this.pipes, this.restartGame, null, this);
  
 };
 //initialise phaser and create a 400px x 490px game

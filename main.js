@@ -102,7 +102,7 @@ pipe.body.velocity.x = -200;
       //Automatically kill the pipe when it is no longer visible
 pipe.checkWorldBounds = true;
 pipe.outOfBoundsKill = true;
-  },
+ 
       //many pipes
   addRowOfPipes : function() {
     //Randomly pick a number between 1 and 5

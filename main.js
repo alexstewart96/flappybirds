@@ -30,7 +30,7 @@ var mainState = {
       this.bird.body.gravity.y = 1000;
 
       //call 'jump' function when the spacebar is pressed
-      var spaceBar = game.input.keyboard.addkey(phaser.keyboard.SPACEBAR);
+      var spaceBar = game.input.keyboard.addkey(phaser.keyboard.spaceBar);
       spaceBar.onDown.add(this.jump, this);
 
       //Create an empty group
@@ -82,8 +82,6 @@ var mainState = {
   restartGame : function() {
     //start the main state which restarts the game
     game.state.start('main');
-      //calls the restartGame function each time the bird dies
-game.physics.arcade.overlap(this.bird, this.pipes, this.restartGame,null, this);
   },
   //add a pipe
   addOnePipe : function(x, y) {
@@ -92,8 +90,23 @@ game.physics.arcade.overlap(this.bird, this.pipes, this.restartGame,null, this);
 
     //add pipe to group
     this.pipes.add(pipe);
+
+    //Enable the physics on the pipe
+    game.physics.arcade.enable(pipe);
+
+    //add velocity to the pipe to make it move left
+    pipe.body.velocity.x = -200;
+
+    //Automatically kill pipe when it is no longer visible
+    pipe.checkWorldBounds = true;
+    pipe.outOfBoundsKill = true;
+
+    //calls the restartGame function each time the bird dies
+
+    game.physics.arcade.overlap(this.bird, this.pipes, this.restartGame, null, this);
   },
-      //many pipes
+
+  //many pipes
   addRowOfPipes : function() {
     //Randomly pick a number between 1 and 5
     //This will be the hole position in the pipe
@@ -109,7 +122,8 @@ game.physics.arcade.overlap(this.bird, this.pipes, this.restartGame,null, this);
     this.score += 1;
 
     this.labelScore.text = this.score;
-      
+
+  }
 };
 //initialise phaser and create a 400px x 490px game
 var game = new Phaser.Game(400, 490);
@@ -118,4 +132,4 @@ var game = new Phaser.Game(400, 490);
 game.state.add('main', mainState);
 
 //start the state to actually start the game
-game.state.start('main');
+game.state.start('main')
